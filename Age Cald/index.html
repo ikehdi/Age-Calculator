@@ -1,0 +1,136 @@
+2
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Age calculator app</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <!--   <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style> -->
+</head>
+
+<body>
+  <div class="container">
+    <div class="gate">
+
+      <div class="date1">
+        Day
+        <div class="date2">
+          <input type="text" name="date" id="date" placeholder="dd" minlength="1" maxlength="2" required>
+          <span class="error-day"></span>
+        </div>
+      </div>
+      <div class="date1">
+        Month
+        <div class="date2">
+          <input type="text" name="month" id="month" placeholder="mm" minlength="1" maxlength="2" required>
+          <span class="error-month"></span>
+        </div>
+      </div>
+
+      <div class="date1">
+        Year
+        <div class="date2">
+          <input type="text" name="year" id="year" placeholder="yyyy" minlength="4" maxlength="4" required>
+          <span class="error-year"></span>
+        </div>
+      </div>
+
+
+
+
+    </div>
+
+    <div class="line">
+      <hr>
+      <button class="btn" name="submit" value="submit">
+        <img src="/assets/images/icon-arrow.svg" onclick="age()">
+      </button>
+    </div>
+
+    <div class="form">
+      <div class="form1">
+        <p><span class="output-days" id="output-days"></span></p>
+        <div class="form1 ">
+          <p><span class="output-month" id="output-month"></span></p>
+        </div>
+        <div class="form1">
+
+          <p> <span class="output-year" id="output-year"> </span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script type="text/javascript">
+  function age(){
+         var d1 = document.getElementById("date").value;
+         var m1 = document.getElementById("month").value;
+         var y1 = document.getElementById("year").value;
+   
+         var date = new Date();
+         var d2 = date.getDate()
+         var m2 = 1 + date.getMonth();
+         var y2 = date.getFullYear();
+         var month = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+   
+   
+         if(d1 > d2){
+           d2 = d2 + month[m2 - 1];
+           m2 = m2 -1;
+         }
+         if(m1 >  m2){
+           m2 = m2 + 12;
+           y2 = y2 -1;
+         }
+   
+         var d = d2 -d1;
+         var m = m2 - m1;
+         var y = y2 - y1;
+   
+          document.querySelector("#output-year").innerHTML = +y+ 'Years'
+          document.querySelector("#output-month").innerHTML = +m+ 'Months'
+          document.querySelector("#output-days").innerHTML = +d+ 'Days'
+       }
+    
+    /* const num = [1 , 2 , 3, 5]
+    const numAray = num.map(n => n * 2)
+    console.log(numAray)
+    
+    const myName = "Sonny"
+    const nameArr = myName.split('')
+    const newName = nameArr.map(v => `${v}${v}`)
+    console.log(newName)
+    const joinedname = newName.join('')
+    console.log(joinedname)
+
+   /*  const names = [
+      { names: "sonny",score: 30 },
+      { names: "Ikeh",score: 20 },
+      { names: "James", score:15 },
+
+    ]
+
+   const playerTeam = names.map(({names , score}) => ({[names] : score}))
+   console.log(playerTeam)
+    const playerScores = names.map(player => ({
+      [player.names] : player.score
+    }))
+    console.log(playerScores) */
+  </script>
+</body>
+
+</html>
